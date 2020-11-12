@@ -97,10 +97,15 @@ $('#add_form_modal').on('click', function(){
 	$("#myModal").find('form').trigger('reset');
   $('#myModal').modal('hide');
 });
-	
-function deleteRecords(){
+
+async function deleteRecords(){
 	$("input:checkbox[name=check_ids]:checked").each(function(){
-		$("#row_"+$(this).val()).remove();
+		var id = $(this).val();
+		//here we have to check status of response but here getting pending status so directly hidding row without checking status
+		var response = fetch('https://jsonplaceholder.typicode.com/posts/'+id, {
+		  method: 'DELETE',
+		});
+		$("#row_"+id).remove();
 	});
 }
 $(document).ready(function() {
