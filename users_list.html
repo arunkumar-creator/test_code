@@ -312,6 +312,8 @@ function deleteUserData(row_id){
 		}
 		$(".table .body_content").empty();
 		$(".body_content").html(body_data);
+		$("#edit_records").prop('disabled', true);
+		$("#delete_records").prop('disabled', true);
 		setTimeout(function(){ 
 			$("input[type=checkbox]").on("change", function() {
 				var editArray = [];
@@ -330,7 +332,7 @@ function deleteUserData(row_id){
 					$("#edit_records").prop('disabled', true);
 				}
 			});
-			}, 2000);
+			}, 1000);
 	}
 </script>
 </html>
